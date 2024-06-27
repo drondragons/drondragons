@@ -13,13 +13,27 @@ class Greeting(StaticClass):
     Класс для получения приветствия в зависимости от времени суток
     """
     
-    WAVING_HAND = """<img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Hand%20gestures/Waving%20Hand.png" alt="Waving Hand" width="40" height="40"/>"""
+    BASE_URL = """https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/"""
     
-    GREETINGS = {i: "Доброе утро" for i in range(4, 12)}
-    GREETINGS.update({i: "Добрый день" for i in range(12, 18)})
-    GREETINGS.update({i: "Добрый вечер" for i in range(18, 22)})
-    GREETINGS.update({i: "Доброй ночи" for i in range(22, 24)})
-    GREETINGS.update({i: "Доброй ночи" for i in range(0, 4)})
+    IMG_SETTINGS = """width="40" height="40" align="center" """
+    
+    WAVING_HAND = f"""<img src="{BASE_URL}Hand%20gestures/Waving%20Hand.png" alt="Waving Hand" {IMG_SETTINGS}/>"""
+    
+    MORNING = f"""<img src="{BASE_URL}Travel%20and%20places/Sunset.png" alt="Morning" {IMG_SETTINGS}/>"""
+    AFTERNOON = f"""<img src="{BASE_URL}Travel%20and%20places/Cityscape.png" alt="Afternoon" {IMG_SETTINGS}/>"""
+    EVENING = f"""<img src="{BASE_URL}Travel%20and%20places/Cityscape%20at%20Dusk.png" alt="Evening" {IMG_SETTINGS}/>"""
+    NIGHT = f"""<img src="{BASE_URL}Travel%20and%20places/Night%20with%20Stars.png" alt="Night" {IMG_SETTINGS}/>"""
+    
+    @classmethod
+    def __initialize_greetings(cls) -> None:
+        """
+        Инициализация приветствий
+        """
+        cls.greetings = {i: f"{cls.MORNING} Доброе утро" for i in range(4, 12)}
+        cls.greetings.update({i: f"{cls.AFTERNOON} Добрый день" for i in range(12, 18)})
+        cls.greetings.update({i: f"{cls.EVENING} Добрый вечер" for i in range(18, 22)})
+        cls.greetings.update({i: f"{cls.NIGHT} Доброй ночи" for i in range(22, 24)})
+        cls.greetings.update({i: f"{cls.NIGHT} Доброй ночи" for i in range(0, 4)})
     
     @classmethod
     def __get_greeting(cls, hour: int) -> str:
@@ -32,7 +46,9 @@ class Greeting(StaticClass):
         Returns:
             str: приветствие в виде строки
         """
-        return cls.GREETINGS[hour]
+        if not hasattr(cls, "greetings"):
+            cls.__initialize_greetings()
+        return cls.greetings[hour]
     
     @classmethod
     def greeting(cls) -> str:
