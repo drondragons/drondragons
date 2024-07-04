@@ -12,17 +12,28 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v2
       with:
-        ref: main
+        ref: main  
+
+    - name: Check for main.py
+      id: check_file
+      run: |
+        if [ ! -f main.py ]; then
+          echo "main.py not found"
+          exit 0
+        fi
 
     - name: Set up Python
+      if: steps.check_file.outputs.found == 'true'
       uses: actions/setup-python@v2
       with:
         python-version: '3.10.11'
 
     - name: Install dependencies
+      if: steps.check_file.outputs.found == 'true'
       run: |
         python -m pip install --upgrade pip
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
 
     - name: Run main.py
+      if: steps.check_file.outputs.found == 'true'
       run: python main.py
