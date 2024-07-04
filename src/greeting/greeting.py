@@ -17,12 +17,15 @@ class Greeting(StaticClass):
     
     IMG_SETTINGS = """width="40" height="40" align="center" """
     
-    WAVING_HAND = f"""<img src="{BASE_URL}Hand%20gestures/Waving%20Hand.png" alt="Waving Hand" {IMG_SETTINGS}/>"""
+    HAND_DIR = """Hand%20gestures/"""
+    TIME_DIR = """Travel%20and%20places/"""
     
-    MORNING = f"""<img src="{BASE_URL}Travel%20and%20places/Sunset.png" alt="Morning" {IMG_SETTINGS}/>"""
-    AFTERNOON = f"""<img src="{BASE_URL}Travel%20and%20places/Cityscape.png" alt="Afternoon" {IMG_SETTINGS}/>"""
-    EVENING = f"""<img src="{BASE_URL}Travel%20and%20places/Cityscape%20at%20Dusk.png" alt="Evening" {IMG_SETTINGS}/>"""
-    NIGHT = f"""<img src="{BASE_URL}Travel%20and%20places/Night%20with%20Stars.png" alt="Night" {IMG_SETTINGS}/>"""
+    WAVING_HAND = f"""<img src="{BASE_URL}{HAND_DIR}Waving%20Hand.png" alt="Waving Hand" {IMG_SETTINGS}/>"""
+    
+    MORNING = f"""<img src="{BASE_URL}{TIME_DIR}Sunset.png" alt="Morning" {IMG_SETTINGS}/>"""
+    AFTERNOON = f"""<img src="{BASE_URL}{TIME_DIR}Cityscape.png" alt="Afternoon" {IMG_SETTINGS}/>"""
+    EVENING = f"""<img src="{BASE_URL}{TIME_DIR}Cityscape%20at%20Dusk.png" alt="Evening" {IMG_SETTINGS}/>"""
+    NIGHT = f"""<img src="{BASE_URL}{TIME_DIR}Night%20with%20Stars.png" alt="Night" {IMG_SETTINGS}/>"""
     
     @classmethod
     def __initialize_greetings(cls) -> None:
