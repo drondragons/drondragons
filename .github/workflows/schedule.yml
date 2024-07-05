@@ -10,9 +10,15 @@ jobs:
 
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v2
+      uses: actions/checkout@v4
       with:
         ref: main  
+
+    - name: List directory contents
+      run: ls -al
+
+    - name: Print working directory
+      run: pwd
 
     - name: Check for main.py
       id: check_file
@@ -24,7 +30,7 @@ jobs:
 
     - name: Set up Python
       if: steps.check_file.outputs.found == 'true'
-      uses: actions/setup-python@v2
+      uses: actions/setup-python@v5
       with:
         python-version: '3.10.11'
 
