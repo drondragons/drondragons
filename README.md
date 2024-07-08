@@ -16,6 +16,8 @@
 ![Top Language by Repo](https://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=drondragons&theme=dark)
 ![Stats](https://github-profile-summary-cards.vercel.app/api/cards/stats?username=drondragons&theme=dark)
 
+![GitHub Contribution Snake Dark](https://raw.githubusercontent.com/drondragons/drondragons/output/dist/github-contribution-grid-snake-dark.svg?palette=github-dark)
+
 ![](https://komarev.com/ghpvc/?username=drondragons)
 
 </div>
