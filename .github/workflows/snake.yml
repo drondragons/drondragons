@@ -16,6 +16,9 @@ on:
 
 jobs:
     generate-snake-animation:
+        permissions: 
+            contents: write
+
         runs-on: ubuntu-latest
         
         timeout-minutes: 2
