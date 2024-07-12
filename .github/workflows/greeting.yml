@@ -49,3 +49,13 @@ jobs:
             - name: Run main.py
               if: steps.check_file.outputs.found == 'true'
               run: python main.py
+
+            # - name: Configut
+
+            - name: Copy README.md to main
+              run: |
+                git checkout main
+                git checkout build -- README.md
+                git add .
+                git commit -m "Обновление README.md"
+                git push origin main
