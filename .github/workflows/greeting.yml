@@ -50,15 +50,10 @@ jobs:
               if: steps.check_file.outputs.found == 'true'
               run: python main.py
 
-            - name: Configure git
+            - name: Copy README.md to main
               run: |
                 git config --global user.name "${{ github.actor }}"
                 git config --global user.email "${{ github.actor_id }}+${{ github.actor }}@users.noreply.github.com"
-
-            - name: Copy README.md to main
-              env:
-                GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-              run: |
                 git fetch origin main
                 git checkout main
                 git checkout build -- README.md
