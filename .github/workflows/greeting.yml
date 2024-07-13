@@ -49,7 +49,9 @@ jobs:
 
             - name: Run main.py
               if: env.FOUND == 'true'
-              run: python main.py
+              run: |
+                python main.py
+                cat README.md
 
             - name: Configure git 
               run: |
