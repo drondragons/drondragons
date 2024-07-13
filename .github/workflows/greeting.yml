@@ -27,23 +27,22 @@ jobs:
                 token: ${{ secrets.GITHUB_TOKEN }}
             
             - name: Check for main.py
-              id: check_file
               run: |
                 if [ ! -f main.py ]; then
                     echo "main.py not found"
-                    echo "::set-output name=found::false"
+                    echo "FOUND=false" >> $GITHUB_ENV
                 else
-                    echo "::set-output name=found::true"
+                    echo "FOUND=true" >> $GITHUB_ENV
                 fi
 
             - name: Set up Python
-              if: steps.check_file.outputs.found == 'true'
+              if: env.FOUND == 'true'
               uses: actions/setup-python@v5
               with:
                 python-version: '3.10.11'
             
             - name: Install dependencies
-              if: steps.check_file.outputs.found == 'true'
+              if: env.FOUND == 'true'
               run: |
                 python -m pip install --upgrade pip
                 if [ -f requirements.txt ]; then
@@ -51,13 +50,16 @@ jobs:
                 fi
 
             - name: Run main.py
-              if: steps.check_file.outputs.found == 'true'
+              if: env.FOUND == 'true'
               run: python main.py
 
-            - name: Copy README.md to main
+            - name: Configure git 
               run: |
                 git config --global user.name "${{ github.actor }}"
                 git config --global user.email "${{ github.actor_id }}+${{ github.actor }}@users.noreply.github.com"
+
+            - name: Copy README.md to main
+              run: |
                 git fetch origin main
                 git checkout main
                 git checkout build -- README.md
