@@ -61,6 +61,7 @@ jobs:
             - name: Copy README.md to main
               run: |
                 git fetch origin main
+                git add .
                 git commit -m "Обновление README.md"
                 git checkout main
                 git checkout build -- README.md
