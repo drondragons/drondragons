@@ -1,4 +1,5 @@
 import datetime
+import zoneinfo
 
 from ..static_class import StaticClass
 
@@ -99,9 +100,10 @@ class Greeting(StaticClass):
     @classmethod
     def greeting(cls) -> str:
         """
-        Возвращает приветствие в зависимости от текущего времени суток
+        Возвращает приветствие в зависимости от текущего времени суток по Москве
         
         Returns:
             str: приветствие в виде строки
         """
-        return cls.__get_greeting(datetime.datetime.now().hour)
+        time_zone = zoneinfo.ZoneInfo("Europe/Moscow")
+        return cls.__get_greeting(datetime.datetime.now(time_zone).hour)
