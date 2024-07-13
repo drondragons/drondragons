@@ -6,9 +6,7 @@ def change_readme_header() -> None:
         lines = readme.readlines()
         
     index = next(index for index, line in enumerate(lines) if line.startswith("#"))
-    lines[index] = f"# {Greeting.greeting()} {Greeting.WAVING_HAND}\n"
-
-    print(lines[index])
+    lines[index] = f"# {Greeting.greeting()} {Greeting.waving_hand}\n"
 
     with open("README.md", "w", encoding="utf-8") as readme:
         readme.writelines(lines)

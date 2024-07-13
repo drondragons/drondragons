@@ -1,14 +1,27 @@
-.PHONY: run install test clean
+.PHONY: run install-requirements test clean
 
 .DEFAULT_GOAL:=run
 
-run:
-	python main.py
+VENV=venv
+VENV_ACTIVATE=source $(VENV)/Scripts/activate
+VENV_DEACTIVATE=deactivate
 
 REPORT_TITLE="Testing report"
 
-install:
-	pip install --requirement requirements.txt
+REQUIREMENTS=pip install --requirement requirements.txt
+
+
+run: create-venv
+	$(VENV_ACTIVATE) && $(REQUIREMENTS) && python main.py && $(VENV_DEACTIVATE)
+
+
+install-requirements:
+	$(REQUIREMENTS)
+
+
+create-venv:
+	python -m venv venv
+
 
 create-allure-dirs:
 	mkdir -p allure allure/allure-results allure/allure-report allure/allure-single-report
@@ -29,7 +42,9 @@ open-report:
 
 test: create-allure-dirs run-tests generate-report generate-single-report open-report
 
+
 clean:
+	rm -rf venv/
 	rm -rf allure/
 	rm -rf .pytest_cache/
 	find . -name '__pycache__' -exec rm -rf {} + 
