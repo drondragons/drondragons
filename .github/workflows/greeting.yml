@@ -52,10 +52,8 @@ jobs:
 
             - name: Configure git
               run: |
-                git branch
-                git fetch origin main
-            #     git config user.name "Github Actions"
-            #     git config user.email "actions@github.com"
+                git config --global user.name "${{ github.actor }}"
+                git config --global user.email "${{ github.actor_id }}+${{ github.actor }}@users.noreply.github.com"
 
             - name: Copy README.md to main
               env:
