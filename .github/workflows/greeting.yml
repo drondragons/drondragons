@@ -65,7 +65,12 @@ jobs:
             - name: Check for changes in README.md
               run: |
                 git diff --quiet README.md
-                echo "README_HAS_CHANGES=echo $?" >> $GITHUB_ENV
+                echo $?
+                if git diff --quiet README.md; then
+                    echo "README_HAS_CHANGES=0" >> $GITHUB_ENV
+                else
+                    echo "README_HAS_CHANGES=1" >> $GITHUB_ENV
+                fi
 
             - name: Commit and push changes
               if: env.README_HAS_CHANGES == '1'
