@@ -61,6 +61,9 @@ jobs:
                 git fetch origin main
                 git checkout main
                 git checkout build -- README.md
+
+            - name: Check for changes in README.md
+              run: |
                 git diff --quiet README.md
                 echo "README_HAS_CHANGES=$?" >> $GITHUB_ENV
 
