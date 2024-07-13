@@ -12,6 +12,9 @@ on:
 
 jobs:
     update-greeting-readme:
+        permissions: 
+            contents: write
+
         runs-on: ubuntu-latest
 
         timeout-minutes: 2
@@ -21,6 +24,7 @@ jobs:
               uses: actions/checkout@v4
               with:
                 ref: build
+                token: ${{ secrets.GITHUB_TOKEN }}
             
             - name: Check for main.py
               id: check_file
