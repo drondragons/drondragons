@@ -54,6 +54,8 @@ jobs:
               run: |
                 git branch
                 git fetch origin main
+                git config user.name "Github Actions"
+                git config user.email "actions@github.com"
 
             - name: Copy README.md to main
               run: |
