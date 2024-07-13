@@ -64,6 +64,7 @@ jobs:
 
             - name: Check for changes in README.md
               run: |
+                date
                 git diff --quiet README.md
                 echo $?
                 if git diff --quiet README.md; then
