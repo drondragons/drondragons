@@ -50,10 +50,10 @@ jobs:
               if: steps.check_file.outputs.found == 'true'
               run: python main.py
 
-            # - name: Configure git
-            #   run: |
-            #     git branch
-            #     git fetch origin main
+            - name: Configure git
+              run: |
+                git branch
+                git fetch origin main
             #     git config user.name "Github Actions"
             #     git config user.email "actions@github.com"
 
