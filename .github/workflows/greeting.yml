@@ -58,17 +58,10 @@ jobs:
                 git config --global user.name "${{ github.actor }}"
                 git config --global user.email "${{ github.actor_id }}+${{ github.actor }}@users.noreply.github.com"
 
-            - name: Copy README.md to main
-              run: |
-                git fetch origin main
-                git add .
-                git commit -m "Обновление README.md"
-                git checkout main
-                git checkout build -- README.md
-
             - name: Check for changes in README.md
               run: |
-                date
+                git fetch origin main
+                cat README.md
                 git diff --quiet README.md
                 echo $?
                 if git diff --quiet README.md; then
@@ -76,6 +69,14 @@ jobs:
                 else
                     echo "README_HAS_CHANGES=1" >> $GITHUB_ENV
                 fi
+
+            - name: Copy README.md to main
+              if: env.README_HAS_CHANGES == '1'
+              run: |
+                git add .
+                git commit -m "Обновление README.md"
+                git checkout main
+                git checkout build -- README.md
 
             - name: Commit and push changes
               if: env.README_HAS_CHANGES == '1'
