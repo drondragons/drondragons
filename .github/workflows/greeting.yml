@@ -72,6 +72,7 @@ jobs:
               run: |
                 git add .
                 git commit -m "Обновление README.md"
+                git push origin build
                 git checkout main
                 git checkout build -- README.md
 
