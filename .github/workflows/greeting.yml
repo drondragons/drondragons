@@ -41,7 +41,6 @@ jobs:
             - name: Check for main.py
               run: |
                 if [ ! -f main.py ]; then
-                    echo "main.py not found"
                     echo "FOUND=false" >> $GITHUB_ENV
                 else
                     echo "FOUND=true" >> $GITHUB_ENV
@@ -61,13 +60,10 @@ jobs:
             - name: Check for changes in README.md
               run: |
                 git fetch origin main
-                cat README.md
-                git diff --quiet README.md
-                echo $?
-                if [ $? -ne 0 ] then
-                    echo "README_HAS_CHANGES=1" >> $GITHUB_ENV
+                if git diff --quiet origin/main README.md; then
+                    echo "README_HAS_CHANGES=0" >> $GITHUB_ENV  
                 else
-                    echo "README_HAS_CHANGES=0" >> $GITHUB_ENV
+                    echo "README_HAS_CHANGES=1" >> $GITHUB_ENV
                 fi
                 echo "README_HAS_CHANGES=${{ env.README_HAS_CHANGES }}"
 
