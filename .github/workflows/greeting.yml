@@ -65,9 +65,9 @@ jobs:
                 git diff --quiet README.md
                 echo $?
                 if git diff --quiet README.md; then
-                    echo "README_HAS_CHANGES=0" >> $GITHUB_ENV
-                else
                     echo "README_HAS_CHANGES=1" >> $GITHUB_ENV
+                else
+                    echo "README_HAS_CHANGES=0" >> $GITHUB_ENV
                 fi
                 echo "${{ env.README_HAS_CHANGES }}"
 
