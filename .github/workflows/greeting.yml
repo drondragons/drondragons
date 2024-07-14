@@ -64,12 +64,12 @@ jobs:
                 cat README.md
                 git diff --quiet README.md
                 echo $?
-                if git diff --quiet README.md; then
+                if [ $? -ne 0 ] then
                     echo "README_HAS_CHANGES=1" >> $GITHUB_ENV
                 else
                     echo "README_HAS_CHANGES=0" >> $GITHUB_ENV
                 fi
-                echo "${{ env.README_HAS_CHANGES }}"
+                echo "README_HAS_CHANGES=${{ env.README_HAS_CHANGES }}"
 
             - name: Copy README.md to main
               if: env.README_HAS_CHANGES == '1'
