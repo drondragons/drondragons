@@ -1,4 +1,18 @@
+# Ignore everything by default
 *
 
+# Git metadata
 !.gitignore
+!.gitattributes
+
+# Project documentation
 !README.md
+
+# GitHub Actions
+!.github/
+!.github/workflows/
+!.github/workflows/*.yml
+
+# Scripts
+!scripts/
+!scripts/*.py

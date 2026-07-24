@@ -1,0 +1,35 @@
+name: Update greeting
+
+on:
+  schedule:
+    - cron: "0 2,9,15,21 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update-greeting:
+    runs-on: ubuntu-latest
+    timeout-minutes: 2
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Update README greeting
+        run: python scripts/update_greeting.py
+
+      - name: Commit README update
+        run: |
+          if git diff --quiet -- README.md; then
+            echo "README greeting is already up to date."
+            exit 0
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git add README.md
+          git commit -m "chore(readme): update greeting"
+          git push
