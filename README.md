@@ -1,8 +1,10 @@
 <div align="center">
 
-<!-- GREETING:START -->
-# <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Travel%20and%20places/Cityscape%20at%20Dusk.png" alt="Evening" width="40" height="40" align="center" /> Добрый вечер <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Hand%20gestures/Waving%20Hand.png" alt="Waving Hand" width="40" height="40" align="center" />
-<!-- GREETING:END -->
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://profile-api.andrey-trunov20012812.workers.dev/github-profile.svg?lang=ru&theme=dark">
+  <source media="(prefers-color-scheme: light)" srcset="https://profile-api.andrey-trunov20012812.workers.dev/github-profile.svg?lang=ru&theme=light">
+  <img alt="Greeting banner" src="https://profile-api.andrey-trunov20012812.workers.dev/github-profile.svg?lang=ru&theme=dark">
+</picture>
 
 [![Typing SVG](https://readme-typing-svg.herokuapp.com?font=Markdown&duration=2200&pause=700&color=58A6FF&center=true&vCenter=true&multiline=true&random=false&width=620&height=96&lines=%D0%90%D0%BD%D0%B4%D1%80%D0%B5%D0%B9+%D0%A2%D1%80%D1%83%D0%BD%D0%BE%D0%B2;%D0%92%D1%8B%D0%BF%D1%83%D1%81%D0%BA%D0%BD%D0%B8%D0%BA+%D0%9C%D0%93%D0%A2%D0%A3+%D0%B8%D0%BC.+%D0%9D.%D0%AD.+%D0%91%D0%B0%D1%83%D0%BC%D0%B0%D0%BD%D0%B0;Python+%7C+C%2B%2B+%7C+Backend+Development)](https://git.io/typing-svg)
 
